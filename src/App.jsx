@@ -1,13 +1,22 @@
-import { useState } from 'react'
+import { createBrowserRouter, RouterProvider } from "react-router";
+import RootLayout from "./components/layouts/RootLayout.jsx";
+import Home from "./pages/Home.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-   <div className="p-2 text-6xl font-bold text-center">
-    Getting started with Event App
-   </div>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
